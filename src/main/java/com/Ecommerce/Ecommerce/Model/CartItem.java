@@ -16,6 +16,14 @@ public class CartItem {
     @JoinColumn(name="product_id")
     private Product product;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @ManyToOne
     @JoinColumn(name="cart_id")
     @JsonIgnore
