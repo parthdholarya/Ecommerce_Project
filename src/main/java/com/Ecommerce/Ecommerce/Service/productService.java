@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class productService {
-    private final ProductRepository productRepository;
+    private  final ProductRepository productRepository;
 
     public productService(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -37,5 +37,10 @@ public class productService {
     }
     public Product editProduct(Product product){
         return productRepository.save(product);
+    }
+    public  List<Product> searchProduct(String name) {
+
+        return productRepository
+                .findByNameContainingIgnoreCase(name);
     }
 }

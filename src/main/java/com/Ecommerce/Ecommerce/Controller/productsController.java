@@ -67,4 +67,13 @@ public class productsController {
         return ResponseEntity.ok(updatedProduct);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<?> searchProduct(
+            @RequestParam String name) {
+
+        return ResponseEntity.ok(
+                service.searchProduct(name)
+        );
+    }
+
 }
