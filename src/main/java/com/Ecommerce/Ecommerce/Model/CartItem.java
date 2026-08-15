@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "cart_items")
 public class CartItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,8 +13,14 @@ public class CartItem {
     private int quantity;
 
     @ManyToOne
-    @JoinColumn(name="product_id")
+    @JoinColumn(name = "product_id")
     private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
+    // getters and setters
 
     public Long getId() {
         return id;
@@ -23,11 +29,6 @@ public class CartItem {
     public void setId(Long id) {
         this.id = id;
     }
-
-    @ManyToOne
-    @JoinColumn(name="cart_id")
-    @JsonIgnore
-    private Cart cart;
 
     public int getQuantity() {
         return quantity;
